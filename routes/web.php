@@ -14,14 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('website.index');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function(){
-    return view('website.home');
+
+Route::get('/category', function(){
+    return view('website.category');
+});
+Route::get('/post', function(){
+    return view('website.post');
 });
 
+
+
+// Admin Panel Routes
+
+Route::get('/login', function(){
+    return view('admin.dashboard.index');
+});
