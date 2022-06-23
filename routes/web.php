@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('website.index');
-});
+}) -> name('/');
 
 Auth::routes();
 
@@ -32,7 +31,11 @@ Route::get('/post', function(){
 
 
 // Admin Panel Routes
-
-Route::get('/login', function(){
-    return view('admin.dashboard.index');
-});
+// Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
+    Route::get('/dashboard', function(){
+        return view('admin.dashboard.index');
+    });
+    Route::get('category', 'App\Http\Controllers\CategoryController@index');
+    Route::get('category/create', 'App\Http\Controllers\CategoryController@create') -> name('category.create');
+    // Route::get('category', [CategoryController::class, 'index']);
+// });
