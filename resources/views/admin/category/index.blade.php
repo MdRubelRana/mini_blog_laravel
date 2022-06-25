@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
@@ -19,6 +20,7 @@
 </div>
 <!-- /.content-header -->
 
+
 <!-- Main content -->
 <div class="content">
     <div class="container-fluid">
@@ -28,7 +30,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">Category List</h3>
-                            <a href="{{ route('category.create') }}" class="btn btn-primary">Create Category</a>
+                            <a href="{{ route ('category.create') }}" class="btn btn-primary">Create Category</a>
                         </div>
 
                     </div>
@@ -68,7 +70,6 @@
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content -->
-
 
 
 @endsection
