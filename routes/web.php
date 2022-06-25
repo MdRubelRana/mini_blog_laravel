@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,16 +36,8 @@ Route::get('/post', function(){
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
     Route::get('/dashboard', function(){
         return view('admin.dashboard.index');
-    });
-    // Route::get('category', 'App\Http\Controllers\CategoryController@index');
-    // Route::get('category/create', 'App\Http\Controllers\CategoryController@create') -> name('category.create');
-    // Route::get('category', [CategoryController::class, 'index']);
+    })->name('dashboard');
 
-
-Route::resource('category', CategoryController::class);
-
-// Route::get("category", [CategoryController::class, 'index']) -> name('category');
-// Route::get("category/create", [CategoryController::class, 'create']) -> name('category.create');
-// Route::post("/category/saved", [CategoryController::class, 'store']) -> name('category.saved');
-// Route::post("/saved", [CategoryController::class, 'store']);
+    Route::resource('category', CategoryController::class);
+    Route::resource('tag', TagController::class);
 });

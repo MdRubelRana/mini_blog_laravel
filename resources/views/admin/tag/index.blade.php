@@ -7,12 +7,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Category Page</h1>
+                <h1 class="m-0">Tag Page</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Category Page</li>
+                    <li class="breadcrumb-item active">Tag Page</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -29,8 +29,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="card-title">Category List</h3>
-                            <a href="{{ route ('category.create') }}" class="btn btn-primary">Create Category</a>
+                            <h3 class="card-title">Tag List</h3>
+                            <a href="{{ route ('tag.create') }}" class="btn btn-primary">Create Tag</a>
                         </div>
 
                     </div>
@@ -42,33 +42,31 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Total Post</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($categories->count())
-                                    @foreach ($categories as $category)
+                                @if($tags->count())
+                                    @foreach ($tags as $tag)
                                         <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->slug }}</td>
-                                            <td>{{ $category->id }}</td>
+                                            <td>{{ $tag->id }}</td>
+                                            <td>{{ $tag->name }}</td>
+                                            <td>{{ $tag->slug }}</td>
                                             <td class="d-flex">
-                                                <a href="{{ route('category.edit', [$category->id]) }}" class="btn btn-primary btn-sm mr-1"><i class="fas fa-edit"></i></a>
-                                                <form action="{{ route('category.destroy', [$category->id]) }}" method="POST" class="mr-1">
+                                                <a href="{{ route('tag.edit', [$tag->id]) }}" class="btn btn-primary btn-sm mr-1"><i class="fas fa-edit"></i></a>
+                                                <form action="{{ route('tag.destroy', [$tag->id]) }}" method="POST" class="mr-1">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                                 </form>
-                                                {{-- <a href="{{ route('category.show', [$category->id]) }}" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a> --}}
+                                            
                                             </td>
                                         </tr>
                                     @endforeach
                                 @else
                                         <tr>
-                                            <td colspan="5">
-                                                <h5 class="text-center">No category found.</h5>
+                                            <td colspan="4">
+                                                <h5 class="text-center">No tags found.</h5>
                                             </td>
                                         </tr>
                                 @endif
