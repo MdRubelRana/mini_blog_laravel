@@ -17,7 +17,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/fontawesome-free/css/all.min.css">
 
     <!-- Toastr Alert -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin') }}//css/adminlte.min.css">
@@ -172,7 +174,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="{{ route('dashboard') }}" class="brand-link">
                 <img src="{{ asset('admin') }}//img/AdminLTELogo.png" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Mini Blog</span>
@@ -187,7 +189,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Mini Blog</a>
+                        <a href="{{ route('dashboard') }}" class="d-block">Mini Blog</a>
                     </div>
                 </div>
 
@@ -195,7 +197,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search"> 
+                            aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -246,12 +248,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <i class="nav-icon fas fa-tags"></i>
                                 <p>
                                     Tag
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('post.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-file"></i>
+                                <p>
+                                    Post
                                     <span class="right badge badge-danger">New</span>
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item bg-danger">
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                     Logout
@@ -304,18 +316,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset('admin') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Toastr Js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- AdminLTE App -->
     <script src="{{ asset('admin') }}//js/adminlte.min.js"></script>
 
+    <!-- AdminLTE App -->
+    <script src="{{ asset('admin') }}//js/bs-custom-file-input.min.js"></script>
+
     <script>
         @if(Session::has('success'))
-            toastr.success("{{Session::get('success')}}");
+        toastr.success("{{Session::get('success')}}");
         @endif
         @if(Session::has('danger'))
-            toastr.error("{{Session::get('danger')}}");
+        toastr.error("{{Session::get('danger')}}");
         @endif
+
+        $(document).ready(function () {
+            bsCustomFileInput.init()
+        })
+
     </script>
 </body>
 
