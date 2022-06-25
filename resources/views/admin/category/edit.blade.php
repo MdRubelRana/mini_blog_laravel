@@ -39,6 +39,7 @@
 
                     <form action="{{ route('category.update', [$category->id]) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         
                         <div class="card-body">
                             @include('includes.errors')

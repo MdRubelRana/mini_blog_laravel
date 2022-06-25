@@ -89,9 +89,23 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+                // validation
+                $this->validate($request, [
+                    'name' => "required|unique:categories,name,$category->name",
+                ]);
+                
+        
+                //db
+                $category->name = $request->name;
+                $category->slug = Str::slug($request->name, '-');
+                $category->description = $request->description;
+                $category->save();
+        
+        
+                Session::flash('success', 'Category updated succesfully');
+                return redirect()->back();
     }
 
     /**
