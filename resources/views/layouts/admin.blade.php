@@ -323,7 +323,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- AdminLTE App -->
-    <script src="{{ asset('admin') }}//js/adminlte.min.js"></script>
+    <script src="{{ asset('admin') }}/js/adminlte.min.js"></script>
 
 
 

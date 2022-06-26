@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
 
@@ -15,21 +16,25 @@ use App\Http\Controllers\TagController;
 |
 */
 
-Route::get('/', function () {
-    return view('website.index');
-}) -> name('/');
+Route::get('/',  [FrontendController::class, 'home'])->name('/');
+Route::get('/category', [FrontendController::class, 'category'])->name('category');
+Route::get('/post',  [FrontendController::class, 'post'])->name('post');
+
+// Route::get('/', function () {
+//     return view('website.index');
+// }) -> name('/');
 
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/category', function(){
-    return view('website.category');
-});
-Route::get('/post', function(){
-    return view('website.post');
-});
+// Route::get('/category', function(){
+//     return view('website.category');
+// });
+// Route::get('/post', function(){
+//     return view('website.post');
+// });
 
 
 

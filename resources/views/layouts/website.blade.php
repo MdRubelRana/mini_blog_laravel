@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="../../css.css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('website') }}/fonts/icomoon/style.css">
     <link rel="stylesheet" href="{{ asset('website') }}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('website') }}/css/magnific-popup.css">
