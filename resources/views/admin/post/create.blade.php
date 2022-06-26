@@ -44,12 +44,12 @@
                             @include('includes.errors')
                             <div class="form-group">
                                 <label for="title">Post title</label>
-                                <input type="text" class="form-control" name="title" id="title"
+                                <input type="text" class="form-control" value="{{ old('title') }}" name="title" id="title"
                                     placeholder="Enter post title">
                             </div>
                             <div class="form-group">
                                 <label for="category">Post Category</label>
-                                <select name="category" id="category" class="form-control">Select Category
+                                <select name="category" id="category" class="form-control">
                                     <option value="" class="">Select Category</option>
                                     @foreach ($categories as $category)
                                     <option value="{{ $category->id }}" class="">{{ $category->name }}</option>
@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea type="text" name="description" class="form-control" id="description"
-                                    placeholder="Description"></textarea>
+                                    placeholder="Description">{{ old('description') }}</textarea>
                             </div>
                         </div>
                         

@@ -57,6 +57,16 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
             'published_at' => Carbon::now(),
         ]);
+
+        // Adding post Image
+        if($request->has('image')){
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientoriginalextension();
+            $image->move('storage/post/', $image_new_name);
+            $post->image = '/storage/post/' . $image_new_name;
+            $post->save();
+        }
+
         Session::flash('success', 'Post created succesfully');
         return redirect()->back();
     }
