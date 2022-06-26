@@ -138,10 +138,13 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         if($post){
+            if(file_exists(public_path($post->image))){
+                unlink(public_path($post->image));
+            }
             $post->delete();
 
-            Session::flash('danger', 'Post has been deleted');
-            return redirect()->route('post.index');
+            Session::flash('danger', 'Post has been deleted');  
         }
+        return redirect()->route('post.index');
     }
 }
