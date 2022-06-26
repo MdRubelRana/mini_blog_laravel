@@ -58,8 +58,8 @@
                                                 </div
                                             </td>
                                             <td>{{ $post->title }}</td>
-                                            <td>{{ $post->category_id }}</td>
-                                            <td>{{ $post->user_id }}</td>
+                                            <td>{{ $post->category->name }}</td>
+                                            <td>{{ $post->user->name }}</td>
                                             <td>{{ $post->action }}</td>
                                             <td class="d-flex">
                                                 <a href="{{ route('post.edit', [$post->id]) }}" class="btn btn-primary btn-sm mr-1"><i class="fas fa-edit"></i></a>

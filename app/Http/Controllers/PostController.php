@@ -90,7 +90,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+        return view('admin.post.edit', compact(['post', 'categories']));
     }
 
     /**
@@ -102,7 +103,30 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request,[
+            'title' => "required|unique:posts,title, $post->id",
+            // 'image' => 'required|image',
+            'description' => 'required',
+            'category' => 'required',
+        ]);
+
+        $post->title = $request->title;
+        $post->slug = Str::slug($request->title, '-');
+        $post->description = $request->description;
+        $post->category_id = $request->category;
+        
+
+        // Adding post Image
+        if($request->hasFile('image')){
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientoriginalextension();
+            $image->move('storage/post/', $image_new_name);
+            $post->image = '/storage/post/' . $image_new_name;
+        }
+        $post->save();
+
+        Session::flash('success', 'Post updated succesfully');
+        return redirect()->back();
     }
 
     /**
@@ -113,6 +137,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if($post){
+            $post->delete();
+
+            Session::flash('danger', 'Post has been deleted');
+            return redirect()->route('post.index');
+        }
     }
 }
