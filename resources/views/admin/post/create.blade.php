@@ -66,10 +66,11 @@
                             <div class="form-group">
                                 <label for="category">Select Tags</label>
                                 @foreach ($tags as $tag)
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="tags[]" id="tag{{ $tag->id }}" value="{{ $tag->id }}">
-                                        <label class="form-check-label">{{ $tag->name }}</label>
-                                    </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="tags[]" id="tag{{ $tag->id }}"
+                                        value="{{ $tag->id }}">
+                                    <label class="form-check-label" for="tag{{ $tag->id }}">{{ $tag->name }}</label>
+                                </div>
                                 @endforeach
                             </div>
                             <div class="form-group">
@@ -93,4 +94,21 @@
 <!-- /.content -->
 
 
+@endsection
+@section('style')
+{{-- Summernote --}}
+<link rel="stylesheet" href="{{ asset('admin') }}/css/summernote-bs4.min.css">
+@endsection
+
+@section('script')
+{{-- Summernote --}}
+<script src="{{ asset('admin') }}/js/summernote-bs4.min.js"></script>
+<script>
+    $('#description').summernote({
+        placeholder: 'Write here',
+        tabsize: 2,
+        height: 250
+    });
+
+</script>
 @endsection

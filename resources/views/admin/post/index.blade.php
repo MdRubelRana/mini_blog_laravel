@@ -43,6 +43,7 @@
                                     <th>Thumbnail</th>
                                     <th>Title</th>
                                     <th>Category</th>
+                                    <th>Tags</th>
                                     <th>Author</th>
                                     <th>Action</th>
                                 </tr>
@@ -55,20 +56,27 @@
                                             <td>
                                                 <div class="" style="max-width: 70px; max-height: 70px; overflow: hidden;">
                                                     <img src="{{ asset($post->image) }}" alt="post_img" class="img-fluid">
-                                                </div
+                                                </div>
                                             </td>
                                             <td>{{ $post->title }}</td>
                                             <td>{{ $post->category->name }}</td>
+                                            <td>
+                                                @foreach ($post->tags as $tag )
+                                                    <span class="badge badge-primary">{{ $tag->name }}</span>
+                                                    
+                                                @endforeach    
+                                            </td>
                                             <td>{{ $post->user->name }}</td>
                                             <td>{{ $post->action }}</td>
                                             <td class="d-flex">
+                                                <a href="{{ route('post.show', [$post->id]) }}" class="btn btn-success btn-sm mr-1"><i class="fas fa-eye"></i></a>
                                                 <a href="{{ route('post.edit', [$post->id]) }}" class="btn btn-primary btn-sm mr-1"><i class="fas fa-edit"></i></a>
-                                                <form action="{{ route('post.destroy', [$post->id]) }}" method="POST" class="mr-1">
+                                                <form action="{{ route('post.destroy', [$post->id]) }}" method="POST" class="">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                                 </form>
-                                                {{-- <a href="{{ route('category.show', [$category->id]) }}" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a> --}}
+                                                
                                             </td>
                                         </tr>
                                     @endforeach

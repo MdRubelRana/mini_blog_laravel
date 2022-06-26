@@ -77,10 +77,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="category">Select Tags</label>
+                            <div class="form-group d-flex flex-wrap">
+                                <label for="category" class="mr-4" >Select Tags</label>
                                 @foreach ($tags as $tag)
-                                <div class="form-check">
+                                <div class="form-check mr-4">
                                     <input class="form-check-input" type="checkbox" name="tags[]" id="tag{{ $tag->id }}"
                                         value="{{ $tag->id }}"
                                         @foreach ($post->tags as $t)
@@ -91,7 +91,7 @@
                                         @endforeach
                                         >
                                         
-                                    <label class="form-check-label" for="{{ $tag->id }}">{{ $tag->name }}</label>
+                                    <label class="form-check-label" for="tag{{ $tag->id }}">{{ $tag->name }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -116,4 +116,21 @@
 <!-- /.content -->
 
 
+@endsection
+@section('style')
+{{-- Summernote --}}
+<link rel="stylesheet" href="{{ asset('admin') }}/css/summernote-bs4.min.css">
+@endsection
+
+@section('script')
+{{-- Summernote --}}
+<script src="{{ asset('admin') }}/js/summernote-bs4.min.js"></script>
+<script>
+    $('#description').summernote({
+        placeholder: 'Write here',
+        tabsize: 2,
+        height: 250
+    });
+
+</script>
 @endsection

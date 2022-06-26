@@ -22,7 +22,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('admin') }}//css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/adminlte.min.css">
+
+    @yield('style')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -323,9 +325,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src="{{ asset('admin') }}//js/adminlte.min.js"></script>
 
-    <!-- AdminLTE App -->
-    <script src="{{ asset('admin') }}//js/bs-custom-file-input.min.js"></script>
 
+
+    <!-- AdminLTE App -->
+    <script src="{{ asset('admin') }}/js/bs-custom-file-input.min.js"></script>
+
+    @yield('script')
     <script>
         @if(Session::has('success'))
         toastr.success("{{Session::get('success')}}");
