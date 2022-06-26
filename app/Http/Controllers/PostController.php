@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -29,8 +30,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.post.create', compact('categories'));
+        return view('admin.post.create', compact(['categories', 'tags']));
     }
 
     /**
@@ -48,6 +50,8 @@ class PostController extends Controller
             'category' => 'required',
         ]);
 
+        
+
         $post = Post::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title, '-'),
@@ -57,6 +61,8 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
             'published_at' => Carbon::now(),
         ]);
+
+        $post->tags()->attach($request->tags);
 
         // Adding post Image
         if($request->has('image')){
@@ -90,8 +96,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.post.edit', compact(['post', 'categories']));
+        return view('admin.post.edit', compact(['post', 'categories', 'tags']));
     }
 
     /**
@@ -115,6 +122,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->category_id = $request->category;
         
+        $post->tags()->sync($request->tags);
 
         // Adding post Image
         if($request->hasFile('image')){
@@ -123,6 +131,7 @@ class PostController extends Controller
             $image->move('storage/post/', $image_new_name);
             $post->image = '/storage/post/' . $image_new_name;
         }
+        
         $post->save();
 
         Session::flash('success', 'Post updated succesfully');

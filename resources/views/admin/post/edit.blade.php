@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                <div class="card-header">
+                    <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">Edit post - {{ $post->title }}</h3>
                             <a href="{{ route ('post.index') }}" class="btn btn-primary">Back to Category Page</a>
@@ -40,21 +40,20 @@
                     <form action="{{ route('post.update', [$post->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        
+
                         <div class="card-body">
                             @include('includes.errors')
                             <div class="form-group">
                                 <label for="title">Post title</label>
-                                <input type="text" class="form-control" value="{{ $post->title }}" name="title" id="title"
-                                    placeholder="Enter post title">
+                                <input type="text" class="form-control" value="{{ $post->title }}" name="title"
+                                    id="title" placeholder="Enter post title">
                             </div>
                             <div class="form-group">
                                 <label for="category">Post Category</label>
                                 <select name="category" id="category" class="form-control">
                                     <option value="" class="">Select Category</option>
                                     @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}"
-                                        @if ($post->category_id == $category->id)
+                                    <option value="{{ $category->id }}" @if ($post->category_id == $category->id)
                                         selected
                                         @endif
                                         class="">{{ $category->name }}</option>
@@ -68,24 +67,41 @@
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="image" name="image">
                                             <label class="custom-file-label" for="image">Choose file</label>
-                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-4 text-right">
-                                        <div class="" style="max-width: 100px; max-height: 100px; overflow: hidden; margin-left: auto;">
+                                        <div class=""
+                                            style="max-width: 100px; max-height: 100px; overflow: hidden; margin-left: auto;">
                                             <img src="{{ asset($post->image) }}" alt="post_image" class="img-fluid">
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Select Tags</label>
+                                @foreach ($tags as $tag)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="tags[]" id="tag{{ $tag->id }}"
+                                        value="{{ $tag->id }}"
+                                        @foreach ($post->tags as $t)
+                                            @if($tag->id == $t->id)
+                                                checked
+                                            @endif
+                                            
+                                        @endforeach
+                                        >
+                                        
+                                    <label class="form-check-label" for="{{ $tag->id }}">{{ $tag->name }}</label>
                                 </div>
+                                @endforeach
+                            </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea type="text" name="description" class="form-control" id="description"
                                     placeholder="Description">{{ $post->description }}</textarea>
                             </div>
                         </div>
-                        
+
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
