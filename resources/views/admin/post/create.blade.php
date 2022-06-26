@@ -63,10 +63,10 @@
                                     <label class="custom-file-label" for="image">Choose file</label>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="category">Select Tags</label>
+                            <div class="form-group d-flex flex-wrap">
+                                <label for="category" class="mr-4">Select Tags</label>
                                 @foreach ($tags as $tag)
-                                <div class="form-check">
+                                <div class="form-check mr-4">
                                     <input class="form-check-input" type="checkbox" name="tags[]" id="tag{{ $tag->id }}"
                                         value="{{ $tag->id }}">
                                     <label class="form-check-label" for="tag{{ $tag->id }}">{{ $tag->name }}</label>
