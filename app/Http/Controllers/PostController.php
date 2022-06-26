@@ -48,7 +48,7 @@ class PostController extends Controller
             'category' => 'required',
         ]);
 
-        $post = Post::created([
+        $post = Post::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title, '-'),
             'image' => 'image.jpg',

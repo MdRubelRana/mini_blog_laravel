@@ -59,11 +59,11 @@
                                             </td>
                                             <td>{{ $post->title }}</td>
                                             <td>{{ $post->category_id }}</td>
-                                            <td>{{ $post->author_id }}</td>
+                                            <td>{{ $post->user_id }}</td>
                                             <td>{{ $post->action }}</td>
                                             <td class="d-flex">
-                                                <a href="{{ route('post.edit', [$category->id]) }}" class="btn btn-primary btn-sm mr-1"><i class="fas fa-edit"></i></a>
-                                                <form action="{{ route('post.destroy', [$category->id]) }}" method="POST" class="mr-1">
+                                                <a href="{{ route('post.edit', [$post->id]) }}" class="btn btn-primary btn-sm mr-1"><i class="fas fa-edit"></i></a>
+                                                <form action="{{ route('post.destroy', [$post->id]) }}" method="POST" class="mr-1">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>

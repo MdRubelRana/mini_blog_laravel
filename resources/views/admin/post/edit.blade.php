@@ -12,7 +12,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Category Page</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Category Page</a></li>
                     <li class="breadcrumb-item active">Edit Category Page</li>
                 </ol>
             </div><!-- /.col -->
@@ -30,8 +30,8 @@
                 <div class="card">
                 <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="card-title">Edit category - {{ $category->name }}</h3>
-                            <a href="{{ route ('category.index') }}" class="btn btn-primary">Back to Category Page</a>
+                            <h3 class="card-title">Edit category - {{ $post->name }}</h3>
+                            <a href="{{ route ('post.index') }}" class="btn btn-primary">Back to Category Page</a>
                         </div>
 
                     </div>

@@ -43,7 +43,7 @@
                         <div class="card-body">
                             @include('includes.errors')
                             <div class="form-group">
-                                <label for="name">Post title</label>
+                                <label for="title">Post title</label>
                                 <input type="text" class="form-control" name="title" id="title"
                                     placeholder="Enter post title">
                             </div>
