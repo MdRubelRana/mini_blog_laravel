@@ -1,9 +1,11 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,7 @@ use App\Http\Controllers\TagController;
 
 Route::get('/',  [FrontendController::class, 'home'])->name('/');
 Route::get('/category', [FrontendController::class, 'category'])->name('category');
-Route::get('/post',  [FrontendController::class, 'post'])->name('post');
+Route::get('/post/{slug}',  [FrontendController::class, 'post'])->name('post');
 
 // Route::get('/', function () {
 //     return view('website.index');
