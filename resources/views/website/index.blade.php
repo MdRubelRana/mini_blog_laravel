@@ -73,7 +73,7 @@
               <div class="post-meta align-items-center text-left clearfix">
                 <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('website') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
                 <span class="d-inline-block mt-1">By <a href="#">{{ $post->user->name }}</a></span>
-                <span>{{ $post->published_at }}</span>
+                <span>{{ $post->created_at->format('M d, Y') }}</span>
               </div>
               
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
