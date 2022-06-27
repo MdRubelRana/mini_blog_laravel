@@ -10,7 +10,7 @@ class FrontendController extends Controller
 
     public function home(){
         $posts = Post::orderBy('created_at','DESC')->take(5)->get();
-        $recentPosts = Post::with('category')->orderBy('created_at','DESC')->paginate(3);
+        $recentPosts = Post::with('category')->orderBy('created_at','DESC')->paginate(9);
         return view('website.index', compact(['posts', 'recentPosts']));
     }
 

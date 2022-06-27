@@ -76,7 +76,8 @@
                 <span>{{ $post->created_at->format('M d, Y') }}</span>
               </div>
               
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
+                {{-- <p>{!! Str::limit($post->description, 100) !!}</p> --}}
+                <p>{{ Str::limit($post->description, 100)  }}</p>
                 <p><a href="{{ route('post', ['slug' => $post->slug]) }}">Read More</a></p>
               </div>
             </div>
